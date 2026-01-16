@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import myPic from "../assets/afnane.png";
 
 function Home({ isDark }) {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ function Home({ isDark }) {
 
       <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 py-20">
         {/* Title */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 animate-fadeIn">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 animate-fadeIn">
           <span
             className={`text-transparent bg-clip-text bg-gradient-to-r ${
               isDark
@@ -63,12 +64,20 @@ function Home({ isDark }) {
           </span>
         </h1>
 
+        {/* Your Picture */}
+        <img
+          src={myPic}
+          alt="Afnane El Idrissi Salmi"
+          className="w-48 h-48 rounded-full object-cover mb-6 border-4 border-purple-500 shadow-lg animate-fadeInUp"
+          style={{ animationDelay: "0.2s" }}
+        />
+
         {/* Subtitle */}
         <p
           className={`max-w-2xl text-lg mb-8 animate-fadeInUp ${
             isDark ? "text-gray-300" : "text-gray-700"
           }`}
-          style={{ animationDelay: "0.2s" }}
+          style={{ animationDelay: "0.4s" }}
         >
           Full-Stack Developer passionate about crafting modern, responsive, and
           high-performance web applications.
@@ -77,7 +86,7 @@ function Home({ isDark }) {
         {/* Tech stack */}
         <div
           className="flex flex-wrap justify-center gap-3 mb-10 animate-fadeInUp"
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: "0.6s" }}
         >
           {[
             { name: "React", link: "https://react.dev" },
@@ -107,7 +116,7 @@ function Home({ isDark }) {
         {/* Buttons */}
         <div
           className="flex flex-col sm:flex-row gap-4 animate-fadeInUp"
-          style={{ animationDelay: "0.6s" }}
+          style={{ animationDelay: "0.8s" }}
         >
           <Link
             to="/projects"
