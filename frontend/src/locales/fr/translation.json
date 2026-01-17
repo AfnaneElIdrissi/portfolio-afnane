@@ -14,7 +14,9 @@
     "welcome": "Bienvenue sur mon portfolio",
     "subtitle": "Développeuse Full-Stack passionnée par la création d'applications web modernes, réactives et performantes.",
     "projectsButton": "Projets",
-    "contactButton": "Contactez-moi"
+    "contactButton": "Contactez-moi",
+    "downloadCV": "Télécharger le CV",
+    "cvDescription": "Vous pouvez télécharger mon CV pour explorer mon parcours et mes compétences."
   },
   "projects": {
     "title": "Mes Projets",

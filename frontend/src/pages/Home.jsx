@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import myPic from "../assets/afnane.png";
 import { useTranslation } from "react-i18next";
+import cvFile from "../assets/Afnane_CV.pdf"; // Put your PDF in assets
 
 function Home({ isDark }) {
   const { t } = useTranslation();
@@ -60,13 +61,36 @@ function Home({ isDark }) {
 
         {/* Subtitle */}
         <p
-          className={`max-w-2xl text-lg mb-8 animate-fadeInUp ${
+          className={`max-w-2xl text-lg mb-4 animate-fadeInUp ${
             isDark ? "text-gray-300" : "text-gray-700"
           }`}
           style={{ animationDelay: "0.4s" }}
         >
           {t("home.subtitle")}
         </p>
+
+        {/* Short description about CV */}
+        <p
+          className={`max-w-xl text-sm mb-4 animate-fadeInUp ${
+            isDark ? "text-gray-400" : "text-gray-600"
+          }`}
+          style={{ animationDelay: "0.5s" }}
+        >
+          {t("home.cvDescription")}
+        </p>
+
+        {/* Download CV Button */}
+        <a
+          href={cvFile}
+          download
+          className={`px-6 py-3 mb-6 rounded-full font-semibold transition hover:scale-105 ${
+            isDark
+              ? "bg-purple-700 text-white hover:bg-purple-800"
+              : "bg-purple-100 text-purple-700 hover:bg-purple-200"
+          }`}
+        >
+          {t("home.downloadCV")}
+        </a>
 
         {/* Tech stack */}
         <div
@@ -142,18 +166,20 @@ function Home({ isDark }) {
       </section>
 
       {/* Animations */}
-      <style >{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
-        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
-      `}</style>
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
+          .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        `}
+      </style>
     </div>
   );
 }

@@ -14,7 +14,9 @@
     "welcome": "Welcome to my portfolio",
     "subtitle": "Full-Stack Developer passionate about crafting modern, responsive, and high-performance web applications.",
     "projectsButton": "Projects",
-    "contactButton": "Contact Me"
+    "contactButton": "Contact Me",
+    "downloadCV": "Download CV",
+    "cvDescription": "You can download my CV to explore my background and expertise."
   },
   "projects": {
     "title": "My Projects",
