@@ -19,21 +19,21 @@
     "cvDescription": "You can download my CV to explore my background and expertise."
   },
   "projects": {
-    "title": "My Projects",
-    "subtitle": "A showcase of my recent work and development projects",
-    "button": "View Project →",
+    "title": "Projects",
+    "subtitle": "Here are some of my completed and upcoming projects",
+    "future": "Upcoming Project",
     "factFeed": {
       "title": "Fact Feed",
-      "description": "A comprehensive platform for managing and sharing facts with a powerful admin dashboard. Features real-time updates, user authentication, and content moderation."
+      "description": "A web app to manage and share interesting facts."
     },
     "portfolio": {
       "title": "Portfolio Website",
       "description": "My personal portfolio showcasing projects, skills, and professional journey. Built with modern design principles and smooth animations."
     },
-    "clubManagement": {
-      "title": "Club Management System",
-      "description": "A full-featured web application to manage clubs, organize events, track members, and facilitate communication between administrators and participants."
-    }
+"restaurantManager": {
+  "title": "Restaurant Management",
+  "description": "A complete web application to manage a restaurant: order taking, reservation management, inventory tracking, and online menu display for customers."
+}
   },
   "about": {
     "title": "About Me",

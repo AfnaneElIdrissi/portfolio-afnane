@@ -18,22 +18,22 @@
     "downloadCV": "Télécharger le CV",
     "cvDescription": "Vous pouvez télécharger mon CV pour explorer mon parcours et mes compétences."
   },
-  "projects": {
-    "title": "Mes Projets",
-    "subtitle": "Une sélection de mes projets récents et développements",
-    "button": "Voir le projet →",
+    "projects": {
+    "title": "Projets",
+    "subtitle": "Voici quelques-uns de mes projets réalisés et à venir",
+    "future": "Projet à venir",
     "factFeed": {
       "title": "Fact Feed",
-      "description": "Une plateforme complète pour gérer et partager des faits avec un tableau de bord admin puissant. Comprend des mises à jour en temps réel, l'authentification utilisateur et la modération de contenu."
+      "description": "Une application web pour gérer et partager des faits intéressants."
     },
     "portfolio": {
       "title": "Portfolio",
       "description": "Mon portfolio personnel présentant mes projets, compétences et parcours professionnel. Construit avec des principes de design modernes et des animations fluides."
     },
-    "clubManagement": {
-      "title": "Gestion de Club",
-      "description": "Une application web complète pour gérer les clubs, organiser des événements, suivre les membres et faciliter la communication entre administrateurs et participants."
-    }
+"restaurantManager": {
+  "title": "Gestion de Restaurant",
+  "description": "Une application web complète pour gérer un restaurant : prise de commandes, gestion des réservations, suivi des stocks, et affichage du menu en ligne pour les clients."
+}
   },
   "about": {
     "title": "À propos de moi",

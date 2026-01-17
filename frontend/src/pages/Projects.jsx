@@ -7,21 +7,21 @@ const projects = [
     description: "projects.factFeed.description",
     tech: ["React", "Laravel", "Tailwind CSS", "MySQL"],
     color: "from-blue-500 to-cyan-500",
-    icon: "📰",
+    future: false,
   },
   {
     title: "projects.portfolio.title",
     description: "projects.portfolio.description",
     tech: ["React", "Tailwind CSS", "JavaScript"],
     color: "from-purple-500 to-pink-500",
-    icon: "💼",
+    future: false,
   },
   {
-    title: "projects.clubManagement.title",
-    description: "projects.clubManagement.description",
+    title: "projects.restaurantManager.title",
+    description: "projects.restaurantManager.description",
     tech: ["Laravel", "React", "Bootstrap", "phpMyAdmin"],
     color: "from-orange-500 to-red-500",
-    icon: "🎯",
+    future: true, // projet futur
   },
 ];
 
@@ -102,26 +102,33 @@ const Projects = ({ isDark }) => {
 
               {/* Card */}
               <div
-                className={`relative h-full rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300 hover:-translate-y-2 border backdrop-blur-2xl ${
+                className={`relative h-96 rounded-3xl p-6 sm:p-8 shadow-2xl transition-all duration-300 hover:-translate-y-2 border backdrop-blur-2xl flex flex-col ${
                   isDark
                     ? "bg-gray-900/80 border-gray-800/50"
                     : "bg-white/80 border-gray-200"
                 }`}
               >
                 {/* Title */}
-                <h2
-                  className={`text-xl sm:text-2xl font-bold mb-3 transition ${
-                    isDark
-                      ? "text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400"
-                      : "text-gray-800 group-hover:text-purple-600"
-                  }`}
-                >
-                  {t(project.title)}
-                </h2>
+                <div className="flex items-center mb-3">
+                  <h2
+                    className={`text-xl sm:text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r transition-all duration-300 ${
+                      isDark
+                        ? "from-white via-white to-white group-hover:from-purple-400 group-hover:via-pink-400 group-hover:to-purple-400"
+                        : "from-gray-800 via-gray-800 to-gray-800 group-hover:from-purple-500 group-hover:via-pink-500 group-hover:to-purple-500"
+                    }`}
+                  >
+                    {t(project.title)}
+                  </h2>
+                  {project.future && (
+                    <span className="ml-2 px-2 py-1 text-xs rounded-full bg-yellow-400 text-white">
+                      {t("projects.future")}
+                    </span>
+                  )}
+                </div>
 
                 {/* Description */}
                 <p
-                  className={`text-sm sm:text-base mb-6 leading-relaxed ${
+                  className={`text-sm sm:text-base mb-4 leading-relaxed flex-grow ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
@@ -129,7 +136,7 @@ const Projects = ({ isDark }) => {
                 </p>
 
                 {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
@@ -144,13 +151,6 @@ const Projects = ({ isDark }) => {
                   ))}
                 </div>
 
-                {/* Button */}
-                <button
-                  className={`w-full mt-4 px-6 py-2.5 font-semibold rounded-xl bg-gradient-to-r ${project.color} text-white transition hover:scale-105 hover:shadow-lg`}
-                >
-                  {t("projects.button")}
-                </button>
-
                 {/* Decorative */}
                 <div
                   className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br ${project.color} opacity-10 rounded-full blur-2xl`}
@@ -162,7 +162,7 @@ const Projects = ({ isDark }) => {
       </main>
 
       {/* Animations */}
-      <style >{`
+      <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
