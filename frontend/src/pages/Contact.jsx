@@ -35,7 +35,7 @@ const Contact = ({ isDark }) => {
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      url: "https://www.linkedin.com/in/afnane-el-idrissi",
+      url: "https://www.linkedin.com/in/afnane-el-idrissi/",
       color: "from-blue-600 to-blue-800"
     },
     {
