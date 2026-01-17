@@ -19,22 +19,22 @@ export default function ScrollManager() {
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = window.innerHeight;
 
-      // 🟢 إذا مازال ميمكنش نروح للصفحة الموالية → خلي scroll الطبيعي
+     
       if (e.deltaY > 0) {
         if (scrollTop + clientHeight < scrollHeight - 10) {
-          // باقي content فالصفحة
-          return; // خلي scroll الطبيعي
+          
+          return; 
         }
       }
 
       if (e.deltaY < 0) {
         if (scrollTop > 10) {
-          // باقي content فوق
+          
           return;
         }
       }
 
-      e.preventDefault(); // من بعد ما وصلنا bottom/top نمنع default
+      e.preventDefault();
       if (isAnimating.current) return;
 
       if (e.deltaY > 0 && index < routes.length - 1) {
@@ -52,7 +52,7 @@ export default function ScrollManager() {
       setTimeout(() => {
         navigate(path);
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 100); // delay صغير باش يعطي إحساس smooth
+      }, 100); 
 
       setTimeout(() => {
         isAnimating.current = false;
