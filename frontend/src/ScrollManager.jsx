@@ -6,44 +6,61 @@ const routes = ["/", "/about", "/projects", "/contact"];
 export default function ScrollManager() {
   const navigate = useNavigate();
   const location = useLocation();
-  const isLocked = useRef(false);
+  const isAnimating = useRef(false);
 
   useEffect(() => {
+    if (!window.matchMedia("(pointer: fine)").matches) return; // PC only
+
     const handleWheel = (e) => {
-      if (isLocked.current) return;
+      const index = routes.indexOf(location.pathname);
+      if (index === -1) return;
 
-      // 🔒 lock scroll
-      isLocked.current = true;
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = window.innerHeight;
 
-      const currentIndex = routes.indexOf(location.pathname);
-
-      // Safety check
-      if (currentIndex === -1) {
-        isLocked.current = false;
-        return;
+      // 🟢 إذا مازال ميمكنش نروح للصفحة الموالية → خلي scroll الطبيعي
+      if (e.deltaY > 0) {
+        if (scrollTop + clientHeight < scrollHeight - 10) {
+          // باقي content فالصفحة
+          return; // خلي scroll الطبيعي
+        }
       }
 
-      // ⬇️ Scroll down
-      if (e.deltaY > 60 && currentIndex < routes.length - 1) {
-        navigate(routes[currentIndex + 1]);
+      if (e.deltaY < 0) {
+        if (scrollTop > 10) {
+          // باقي content فوق
+          return;
+        }
       }
 
-      // ⬆️ Scroll up
-      if (e.deltaY < -60 && currentIndex > 0) {
-        navigate(routes[currentIndex - 1]);
+      e.preventDefault(); // من بعد ما وصلنا bottom/top نمنع default
+      if (isAnimating.current) return;
+
+      if (e.deltaY > 0 && index < routes.length - 1) {
+        isAnimating.current = true;
+        navigateSmooth(routes[index + 1]);
       }
 
-      // ⏱ cooldown
+      if (e.deltaY < 0 && index > 0) {
+        isAnimating.current = true;
+        navigateSmooth(routes[index - 1]);
+      }
+    };
+
+    const navigateSmooth = (path) => {
       setTimeout(() => {
-        isLocked.current = false;
-      }, 100);
+        navigate(path);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100); // delay صغير باش يعطي إحساس smooth
+
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 800);
     };
 
-    window.addEventListener("wheel", handleWheel, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, [location.pathname, navigate]);
 
   return null;

@@ -30,6 +30,7 @@ function App() {
       <div className={isDark ? "dark" : "light"}>
         {/* Navbar */}
         <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+<div className="pt-24">
 
         {/* Pages */}
         <Routes>
@@ -38,6 +39,7 @@ function App() {
           <Route path="/projects" element={<Projects isDark={isDark} />} />
           <Route path="/contact" element={<Contact isDark={isDark} />} />
         </Routes>
+</div>
 
         {/* Footer */}
         <Footer isDark={isDark} />

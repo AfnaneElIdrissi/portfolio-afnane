@@ -5,20 +5,7 @@ import myPic from "../assets/afnane.png";
 function Home({ isDark }) {
   const navigate = useNavigate();
 
-  // 🔽 Scroll down → go to About page
-  useEffect(() => {
-    const handleScroll = (e) => {
-      if (e.deltaY > 0) {
-        navigate("/about");
-      }
-    };
-
-    window.addEventListener("wheel", handleScroll, { once: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, [navigate]);
+ 
 
   return (
     <div
