@@ -37,7 +37,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
         {/* Logo */}
         <h1
           className={`text-lg font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r ${
-            isDark ? "from-purple-400 via-pink-400 to-purple-400" : "from-purple-600 via-pink-600 to-purple-600"
+            isDark
+              ? "from-purple-400 via-pink-400 to-purple-400"
+              : "from-purple-600 via-pink-600 to-purple-600"
           }`}
         >
           {t("navbar.name")}
@@ -126,7 +128,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className={`md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md p-4 space-y-2`}
+          className={`md:hidden bg-white/20 dark:bg-gray-900/20 backdrop-blur-xl p-4 space-y-2 rounded-xl transition`}
         >
           {navItems.map((item) => (
             <NavLink
@@ -140,8 +142,8 @@ const Navbar = ({ isDark, toggleTheme }) => {
                       ? "bg-purple-700 text-white"
                       : "bg-purple-100 text-purple-700"
                     : isDark
-                    ? "text-gray-300 hover:bg-gray-800 hover:text-white"
-                    : "text-gray-700 hover:bg-purple-100 hover:text-purple-700"
+                    ? "text-gray-300 hover:bg-gray-800/50 hover:text-white"
+                    : "text-gray-700 hover:bg-purple-100/50 hover:text-purple-700"
                 }`
               }
             >
