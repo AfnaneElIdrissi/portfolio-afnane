@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Contact = ({ isDark }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,7 +19,6 @@ const Contact = ({ isDark }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Add your email/send logic here
   };
 
   const handleChange = (e) => {
@@ -88,12 +89,12 @@ const Contact = ({ isDark }) => {
             <span
               className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400`}
             >
-              Get In Touch
+              {t("contact.title")}
             </span>
           </h1>
           <div className="h-1 w-28 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
           <p className={`mt-6 max-w-xl mx-auto ${isDark ? "text-gray-400" : "text-gray-700"}`}>
-            Have a project in mind or want to collaborate? I’d love to hear from you.
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -110,7 +111,7 @@ const Contact = ({ isDark }) => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t("contact.form.name")}
                   value={formData.name}
                   onChange={handleChange}
                   onFocus={() => setFocused({ ...focused, name: true })}
@@ -130,7 +131,7 @@ const Contact = ({ isDark }) => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your email"
+                  placeholder={t("contact.form.email")}
                   value={formData.email}
                   onChange={handleChange}
                   onFocus={() => setFocused({ ...focused, email: true })}
@@ -150,7 +151,7 @@ const Contact = ({ isDark }) => {
                 <textarea
                   name="message"
                   rows="5"
-                  placeholder="Your message..."
+                  placeholder={t("contact.form.message")}
                   value={formData.message}
                   onChange={handleChange}
                   onFocus={() => setFocused({ ...focused, message: true })}
@@ -171,7 +172,7 @@ const Contact = ({ isDark }) => {
                   type="submit"
                   className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold hover:scale-105 transition"
                 >
-                  Send Message
+                  {t("contact.form.submit")}
                 </button>
               </form>
             </div>
@@ -180,7 +181,7 @@ const Contact = ({ isDark }) => {
           {/* Social Links */}
           <div className="space-y-6">
             <h2 className={`text-2xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
-              Let’s Connect
+              {t("contact.socialTitle")}
             </h2>
 
             <div className="grid grid-cols-2 gap-4">
@@ -191,9 +192,7 @@ const Contact = ({ isDark }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`relative p-5 rounded-2xl border transition-transform hover:scale-105 flex flex-col items-center justify-center ${
-                    isDark
-                      ? "bg-gray-800 border-gray-700"
-                      : "bg-white border-gray-300"
+                    isDark ? "bg-gray-800 border-gray-700" : "bg-white border-gray-300"
                   }`}
                 >
                   <div
@@ -210,7 +209,7 @@ const Contact = ({ isDark }) => {
             </div>
 
             <p className={`${isDark ? "text-gray-400" : "text-gray-700"} text-sm`}>
-              I usually reply within <span className="text-purple-400 font-semibold">24 hours</span>.
+              {t("contact.replyTime", { hours: 24 })}
             </p>
           </div>
         </div>

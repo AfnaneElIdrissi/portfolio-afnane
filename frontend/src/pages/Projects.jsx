@@ -1,26 +1,24 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const projects = [
   {
-    title: "Fact Feed",
-    description:
-      "A comprehensive platform for managing and sharing facts with a powerful admin dashboard. Features real-time updates, user authentication, and content moderation.",
+    title: "projects.factFeed.title",
+    description: "projects.factFeed.description",
     tech: ["React", "Laravel", "Tailwind CSS", "MySQL"],
     color: "from-blue-500 to-cyan-500",
     icon: "📰",
   },
   {
-    title: "Portfolio Website",
-    description:
-      "My personal portfolio showcasing projects, skills, and professional journey. Built with modern design principles and smooth animations.",
+    title: "projects.portfolio.title",
+    description: "projects.portfolio.description",
     tech: ["React", "Tailwind CSS", "JavaScript"],
     color: "from-purple-500 to-pink-500",
     icon: "💼",
   },
   {
-    title: "Club Management System",
-    description:
-      "A full-featured web application to manage clubs, organize events, track members, and facilitate communication between administrators and participants.",
+    title: "projects.clubManagement.title",
+    description: "projects.clubManagement.description",
     tech: ["Laravel", "React", "Bootstrap", "phpMyAdmin"],
     color: "from-orange-500 to-red-500",
     icon: "🎯",
@@ -28,6 +26,8 @@ const projects = [
 ];
 
 const Projects = ({ isDark }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`min-h-screen w-full overflow-x-hidden transition-colors duration-500 ${
@@ -69,7 +69,7 @@ const Projects = ({ isDark }) => {
                   : "from-purple-600 via-pink-600 to-purple-600"
               }`}
             >
-              My Projects
+              {t("projects.title")}
             </span>
           </h1>
 
@@ -80,7 +80,7 @@ const Projects = ({ isDark }) => {
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            A showcase of my recent work and development projects
+            {t("projects.subtitle")}
           </p>
         </div>
 
@@ -116,7 +116,7 @@ const Projects = ({ isDark }) => {
                       : "text-gray-800 group-hover:text-purple-600"
                   }`}
                 >
-                  {project.title}
+                  {t(project.title)}
                 </h2>
 
                 {/* Description */}
@@ -125,7 +125,7 @@ const Projects = ({ isDark }) => {
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  {project.description}
+                  {t(project.description)}
                 </p>
 
                 {/* Tech stack */}
@@ -148,7 +148,7 @@ const Projects = ({ isDark }) => {
                 <button
                   className={`w-full mt-4 px-6 py-2.5 font-semibold rounded-xl bg-gradient-to-r ${project.color} text-white transition hover:scale-105 hover:shadow-lg`}
                 >
-                  View Project →
+                  {t("projects.button")}
                 </button>
 
                 {/* Decorative */}
@@ -164,34 +164,17 @@ const Projects = ({ isDark }) => {
       {/* Animations */}
       <style jsx>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out;
-        }
-
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
       `}</style>
     </div>
   );

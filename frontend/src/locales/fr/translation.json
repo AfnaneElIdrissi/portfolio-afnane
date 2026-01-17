@@ -1,0 +1,55 @@
+{
+  "navbar": {
+    "name": "El idrissi salmi Afnane",
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "contact": "Contact",
+    "switchLight": "Passer en mode clair",
+    "switchDark": "Passer en mode sombre",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "home": {
+    "welcome": "Bienvenue sur mon portfolio",
+    "subtitle": "Développeuse Full-Stack passionnée par la création d'applications web modernes, réactives et performantes.",
+    "projectsButton": "Projets",
+    "contactButton": "Contactez-moi"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "subtitle": "Une sélection de mes projets récents et développements",
+    "button": "Voir le projet →",
+    "factFeed": {
+      "title": "Fact Feed",
+      "description": "Une plateforme complète pour gérer et partager des faits avec un tableau de bord admin puissant. Comprend des mises à jour en temps réel, l'authentification utilisateur et la modération de contenu."
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Mon portfolio personnel présentant mes projets, compétences et parcours professionnel. Construit avec des principes de design modernes et des animations fluides."
+    },
+    "clubManagement": {
+      "title": "Gestion de Club",
+      "description": "Une application web complète pour gérer les clubs, organiser des événements, suivre les membres et faciliter la communication entre administrateurs et participants."
+    }
+  },
+  "about": {
+    "title": "À propos de moi",
+    "p1": "Bonjour, je suis Afnane El Idrissi Salmi, développeuse Full Stack passionnée par la création d'applications web élégantes et évolutives.",
+    "p2": "J'étudie à l'ISTA et je me spécialise dans les technologies frontend et backend modernes.",
+    "p3": "J'aime transformer les idées en expériences numériques propres, efficaces et conviviales.",
+    "skillsTitle": "Compétences & Technologies"
+  },
+  "contact": {
+    "title": "Entrons en contact",
+    "subtitle": "Vous avez un projet en tête ou souhaitez collaborer ? Je serais ravie d'échanger avec vous.",
+    "form": {
+      "name": "Votre nom",
+      "email": "Votre e-mail",
+      "message": "Votre message...",
+      "submit": "Envoyer le message"
+    },
+    "socialTitle": "Connectons-nous",
+    "replyTime": "Je réponds généralement sous {{hours}} heures."
+  }
+}

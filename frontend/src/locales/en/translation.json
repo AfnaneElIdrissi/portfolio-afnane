@@ -1,0 +1,55 @@
+{
+  "navbar": {
+    "name": "El idrissi salmi Afnane",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "switchLight": "Switch to light mode",
+    "switchDark": "Switch to dark mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "welcome": "Welcome to my portfolio",
+    "subtitle": "Full-Stack Developer passionate about crafting modern, responsive, and high-performance web applications.",
+    "projectsButton": "Projects",
+    "contactButton": "Contact Me"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A showcase of my recent work and development projects",
+    "button": "View Project →",
+    "factFeed": {
+      "title": "Fact Feed",
+      "description": "A comprehensive platform for managing and sharing facts with a powerful admin dashboard. Features real-time updates, user authentication, and content moderation."
+    },
+    "portfolio": {
+      "title": "Portfolio Website",
+      "description": "My personal portfolio showcasing projects, skills, and professional journey. Built with modern design principles and smooth animations."
+    },
+    "clubManagement": {
+      "title": "Club Management System",
+      "description": "A full-featured web application to manage clubs, organize events, track members, and facilitate communication between administrators and participants."
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "p1": "Hi, I'm Afnane El Idrissi Salmi, a Full Stack Developer passionate about building elegant and scalable web applications.",
+    "p2": "I study at ISTA and specialize in modern frontend and backend technologies.",
+    "p3": "I love transforming ideas into clean, efficient, and user-friendly digital experiences.",
+    "skillsTitle": "Skills & Technologies"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or want to collaborate? I’d love to hear from you.",
+    "form": {
+      "name": "Your name",
+      "email": "Your email",
+      "message": "Your message...",
+      "submit": "Send Message"
+    },
+    "socialTitle": "Let’s Connect",
+    "replyTime": "I usually reply within {{hours}} hours."
+  }
+}

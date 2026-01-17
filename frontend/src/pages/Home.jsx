@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import myPic from "../assets/afnane.png";
+import { useTranslation } from "react-i18next";
 
 function Home({ isDark }) {
-  const navigate = useNavigate();
-
- 
+  const { t } = useTranslation();
 
   return (
     <div
@@ -47,14 +46,14 @@ function Home({ isDark }) {
                 : "from-purple-600 via-pink-600 to-purple-600"
             }`}
           >
-            Welcome to my portfolio
+            {t("home.welcome")}
           </span>
         </h1>
 
         {/* Your Picture */}
         <img
           src={myPic}
-          alt="Afnane El Idrissi Salmi"
+          alt={t("navbar.name")}
           className="w-48 h-48 rounded-full object-cover mb-6 border-4 border-purple-500 shadow-lg animate-fadeInUp"
           style={{ animationDelay: "0.2s" }}
         />
@@ -66,8 +65,7 @@ function Home({ isDark }) {
           }`}
           style={{ animationDelay: "0.4s" }}
         >
-          Full-Stack Developer passionate about crafting modern, responsive, and
-          high-performance web applications.
+          {t("home.subtitle")}
         </p>
 
         {/* Tech stack */}
@@ -75,14 +73,11 @@ function Home({ isDark }) {
           className="flex flex-wrap justify-center gap-3 mb-10 animate-fadeInUp"
           style={{ animationDelay: "0.6s" }}
         >
-          {[
+          {[ 
             { name: "React", link: "https://react.dev" },
             { name: "Laravel", link: "https://laravel.com" },
             { name: "Tailwind CSS", link: "https://tailwindcss.com" },
-            {
-              name: "JavaScript",
-              link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-            },
+            { name: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" }
           ].map((tech) => (
             <a
               key={tech.name}
@@ -113,7 +108,7 @@ function Home({ isDark }) {
                 : "border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white"
             }`}
           >
-            Projects
+            {t("home.projectsButton")}
           </Link>
 
           <Link
@@ -124,7 +119,7 @@ function Home({ isDark }) {
                 : "border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white"
             }`}
           >
-            Contact Me
+            {t("home.contactButton")}
           </Link>
         </div>
 
@@ -149,35 +144,15 @@ function Home({ isDark }) {
       {/* Animations */}
       <style jsx>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out;
-        }
-
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
-          opacity: 0;
-        }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
       `}</style>
     </div>
   );

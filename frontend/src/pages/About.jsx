@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const About = ({ isDark }) => {
+  const { t } = useTranslation();
+
   const skills = [
     {
       name: "HTML5",
@@ -65,13 +68,6 @@ const About = ({ isDark }) => {
       url: "https://www.phpmyadmin.net",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     },
-    // {
-    //   name: "MySQL",
-    //   color: "from-blue-600 to-cyan-600",
-    //   category: "Database",
-    //   url: "https://www.mysql.com",
-    //   icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-    // },
   ];
 
   return (
@@ -93,7 +89,7 @@ const About = ({ isDark }) => {
           <div className="text-center mb-16 animate-fadeIn">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <span className={`text-transparent bg-clip-text bg-gradient-to-r ${isDark ? "from-purple-400 via-pink-400 to-purple-400" : "from-purple-600 via-pink-600 to-purple-600"}`}>
-                About Me
+                {t("about.title")} {/* TRANSLATION */}
               </span>
             </h1>
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
@@ -107,25 +103,21 @@ const About = ({ isDark }) => {
               {/* Text */}
               <div className="space-y-6 mb-12">
                 <p className={`${isDark ? "text-gray-300" : "text-gray-700"} text-lg`}>
-                  Hi, I'm{" "}
-                  <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
-                    Afnane El Idrissi Salmi
-                  </span>
-                  , a Full Stack Developer passionate about building elegant and scalable web applications.
+                  {t("about.p1")} {/* TRANSLATION */}
                 </p>
 
                 <p className={`${isDark ? "text-gray-400" : "text-gray-600"} text-lg`}>
-                  I study at <span className="text-purple-500 font-semibold">ISTA</span> and specialize in modern frontend and backend technologies.
+                  {t("about.p2")} {/* TRANSLATION */}
                 </p>
 
                 <p className={`${isDark ? "text-gray-400" : "text-gray-600"} text-lg`}>
-                  I love transforming ideas into clean, efficient, and user-friendly digital experiences.
+                  {t("about.p3")} {/* TRANSLATION */}
                 </p>
               </div>
 
               {/* Skills */}
               <h2 className={`text-2xl font-semibold mb-6 ${isDark ? "text-white" : "text-gray-800"}`}>
-                Skills & Technologies
+                {t("about.skillsTitle")} {/* TRANSLATION */}
               </h2>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -162,34 +154,15 @@ const About = ({ isDark }) => {
       {/* Animations */}
       <style jsx>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out;
-        }
-
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out;
-        }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
       `}</style>
     </div>
   );

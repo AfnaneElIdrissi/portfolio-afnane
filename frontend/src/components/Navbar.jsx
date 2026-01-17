@@ -1,52 +1,71 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = ({ isDark, toggleTheme }) => {
+  const { t, i18n } = useTranslation(); // translation function + i18n
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Scroll detection
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on escape key
+  // Close mobile menu on escape
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape" && menuOpen) {
-        setMenuOpen(false);
-      }
+      if (e.key === "Escape" && menuOpen) setMenuOpen(false);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
+  // Nav items with translation
   const navItems = [
-    { path: "/", name: "Home" },
-    { path: "/about", name: "About" },
-    { path: "/projects", name: "Projects" },
-    { path: "/contact", name: "Contact" },
+    { path: "/", name: t("navbar.home") },
+    { path: "/about", name: t("navbar.about") },
+    { path: "/projects", name: t("navbar.projects") },
+    { path: "/contact", name: t("navbar.contact") },
   ];
 
   return (
     <>
-      {/* Theme Toggle */}
-      <button
-        onClick={toggleTheme}
-        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-        className={`fixed top-24 right-4 z-50 p-3 rounded-full backdrop-blur-xl transition focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-          isDark
-            ? "bg-gray-800/80 border border-gray-700"
-            : "bg-white/80 border border-gray-200 shadow-lg"
-        }`}
-        style={{ minWidth: "44px", minHeight: "44px" }} // Ensure touch target size
-      >
-        {isDark ? "🌙" : "☀️"}
-      </button>
+      {/* Theme & Language Controls */}
+      <div className="fixed top-24 right-4 z-50 flex flex-col gap-2 items-center">
+        {/* Theme toggle */}
+        <button
+          onClick={toggleTheme}
+          aria-label={isDark ? t("navbar.switchLight") : t("navbar.switchDark")}
+          className={`p-3 rounded-full backdrop-blur-xl transition focus:outline-none focus:ring-2 focus:ring-purple-500 ${
+            isDark
+              ? "bg-gray-800 border border-gray-700"
+              : "bg-white border border-gray-200 shadow-lg"
+          }`}
+          style={{ minWidth: "44px", minHeight: "44px" }}
+        >
+          {isDark ? "🌙" : "☀️"}
+        </button>
+
+        {/* Language buttons */}
+        <div className="flex gap-1 justify-center mt-1">
+          <button
+            onClick={() => i18n.changeLanguage("en")}
+            className="px-2 py-1 rounded bg-purple-500 text-white text-sm hover:bg-purple-600 transition"
+          >
+            EN
+          </button>
+          <button
+            onClick={() => i18n.changeLanguage("fr")}
+            className="px-2 py-1 rounded bg-pink-500 text-white text-sm hover:bg-pink-600 transition"
+          >
+            FR
+          </button>
+        </div>
+      </div>
 
       {/* Navbar */}
       <nav
@@ -54,10 +73,11 @@ const Navbar = ({ isDark, toggleTheme }) => {
         aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? `${isDark ? "bg-black/80" : "bg-white/80"} backdrop-blur-xl shadow-lg py-3`
-            : `${isDark
-                ? "bg-gradient-to-r from-gray-900 via-black to-gray-800"
-                : "bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50"
+            ? `${isDark ? "bg-black" : "bg-white"} shadow-lg py-3`
+            : `${
+                isDark
+                  ? "bg-gradient-to-r from-gray-900 via-black to-gray-800"
+                  : "bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50"
               } py-4`
         }`}
       >
@@ -70,7 +90,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
                 : "from-purple-600 via-pink-600 to-purple-600"
             }`}
           >
-            El idrissi salmi Afnane
+            {t("navbar.name")}
           </h1>
 
           {/* Desktop Links */}
@@ -96,7 +116,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
                       : "text-gray-600 hover:text-purple-600 hover:bg-purple-100 hover:border hover:border-purple-500 hover:shadow-md hover:scale-105"
                   }`
                 }
-                style={{ minHeight: "44px" }} // Ensure touch target size
+                style={{ minHeight: "44px" }}
               >
                 {item.name}
               </NavLink>
@@ -105,13 +125,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
           {/* Mobile Button */}
           <button
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? t("navbar.closeMenu") : t("navbar.openMenu")}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
             className={`md:hidden text-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 ${
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
-            style={{ minWidth: "44px", minHeight: "44px" }} // Ensure touch target size
+            style={{ minWidth: "44px", minHeight: "44px" }}
           >
             {menuOpen ? "✕" : "☰"}
           </button>
@@ -121,7 +141,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
         {menuOpen && (
           <div
             className={`md:hidden mt-4 px-4 pb-4 space-y-3 ${
-              isDark ? "bg-black/90" : "bg-white/90"
+              isDark ? "bg-black" : "bg-white"
             } backdrop-blur-xl`}
             role="menu"
             aria-label="Mobile navigation menu"
@@ -143,7 +163,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
                   }`
                 }
                 role="menuitem"
-                style={{ minHeight: "44px" }} // Ensure touch target size
+                style={{ minHeight: "44px" }}
               >
                 {item.name}
               </NavLink>
