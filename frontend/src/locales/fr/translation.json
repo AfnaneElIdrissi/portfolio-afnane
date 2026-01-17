@@ -42,16 +42,20 @@
     "p3": "J'aime transformer les idées en expériences numériques propres, efficaces et conviviales.",
     "skillsTitle": "Compétences & Technologies"
   },
-  "contact": {
-    "title": "Entrons en contact",
-    "subtitle": "Vous avez un projet en tête ou souhaitez collaborer ? Je serais ravie d'échanger avec vous.",
+ "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Une question ou envie de collaborer ? Envoyez-moi un message et je vous répondrai rapidement !",
     "form": {
       "name": "Votre nom",
       "email": "Votre e-mail",
-      "message": "Votre message...",
-      "submit": "Envoyer le message"
+      "message": "Votre message",
+      "submit": "Envoyer",
+      "sending": "Envoi..."
     },
-    "socialTitle": "Connectons-nous",
-    "replyTime": "Je réponds généralement sous {{hours}} heures."
-  }
+    "socialTitle": "Mes réseaux sociaux",
+    "success": "Message envoyé avec succès !",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "socialTitle": "Connectons-nous",
+  "replyTime": "Je réponds généralement sous {{hours}} heures."
 }

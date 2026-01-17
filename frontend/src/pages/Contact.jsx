@@ -18,32 +18,45 @@ const Contact = ({ isDark }) => {
     message: false
   });
 
+  const [status, setStatus] = useState(null); // "success" | "error"
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
     emailjs
       .send(
-        "service_o5ort9j", //  service ID
+        "service_o5ort9j", // service ID
         "template_stv5thl", // template ID
         {
           name: formData.name,
           email: formData.email,
           message: formData.message
         },
-        "OokRXpl7g8CYlCJGp" //  public key
+        "OokRXpl7g8CYlCJGp" // public key
       )
       .then(
         () => {
-          alert("Message sent successfully!");
+          setLoading(false);
+          setStatus("success");
           setFormData({ name: "", email: "", message: "" });
+
+          // hide after 4 seconds
+          setTimeout(() => setStatus(null), 4000);
         },
         (error) => {
           console.error("EmailJS Error:", error);
-          alert("Something went wrong. Please try again.");
+          setLoading(false);
+          setStatus("error");
+
+          // hide after 4 seconds
+          setTimeout(() => setStatus(null), 4000);
         }
       );
   };
@@ -187,13 +200,14 @@ const Contact = ({ isDark }) => {
                       : "border-gray-300 bg-white text-gray-900"
                   }`}
                   required
-                ></textarea>
+                />
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold hover:scale-105 transition"
+                  disabled={loading}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold hover:scale-105 transition disabled:opacity-60"
                 >
-                  {t("contact.form.submit")}
+                  {loading ? t("contact.form.sending") : t("contact.form.submit")}
                 </button>
               </form>
             </div>
@@ -233,6 +247,28 @@ const Contact = ({ isDark }) => {
           </div>
         </div>
       </main>
+
+      {/* Bottom Alert */}
+      {status === "success" && (
+        <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-lg animate-fadeInUp">
+          {t("contact.success")}
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg animate-fadeInUp">
+          {t("contact.error")}
+        </div>
+      )}
+
+      {/* Animations */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp { animation: fadeInUp 0.5s ease-out forwards; }
+      `}</style>
     </div>
   );
 };
