@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import emailjs from "emailjs-com";
 
 const Contact = ({ isDark }) => {
   const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,13 +18,34 @@ const Contact = ({ isDark }) => {
     message: false
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_o5ort9j", //  service ID
+        "template_stv5thl", // template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        },
+        "OokRXpl7g8CYlCJGp" //  public key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("Something went wrong. Please try again.");
+        }
+      );
   };
 
   const socialLinks = [
@@ -86,9 +109,7 @@ const Contact = ({ isDark }) => {
         {/* Title */}
         <div className="text-center animate-fadeIn">
           <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            <span
-              className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400`}
-            >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
               {t("contact.title")}
             </span>
           </h1>
@@ -200,36 +221,18 @@ const Contact = ({ isDark }) => {
                   />
                   <div className="relative z-10 text-3xl mb-2">{social.icon}</div>
                   <span
-                    className={`relative z-10 font-medium ${isDark ? "text-gray-300" : "text-gray-900"}`}
+                    className={`relative z-10 font-medium ${
+                      isDark ? "text-gray-300" : "text-gray-900"
+                    }`}
                   >
                     {social.name}
                   </span>
                 </a>
               ))}
             </div>
-
-            <p className={`${isDark ? "text-gray-400" : "text-gray-700"} text-sm`}>
-              {t("contact.replyTime", { hours: 24 })}
-            </p>
           </div>
         </div>
       </main>
-
-      {/* Animations */}
-      <style >{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out; }
-        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
-      `}</style>
     </div>
   );
 };
