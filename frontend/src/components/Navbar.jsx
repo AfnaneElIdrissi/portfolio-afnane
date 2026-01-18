@@ -127,9 +127,11 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div
-          className={`md:hidden bg-white/20 dark:bg-gray-900/20 backdrop-blur-xl p-4 space-y-2 rounded-xl transition`}
-        >
+  <div
+    className={`md:hidden ${
+      isDark ? "bg-gray-900" : "bg-white"
+    } p-4 space-y-2 shadow-lg transition`}
+  >
           {navItems.map((item) => (
             <NavLink
               key={item.path}
