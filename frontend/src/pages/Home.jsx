@@ -39,7 +39,8 @@ function Home({ isDark }) {
 
       <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-5 py-20">
         {/* Title */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 animate-fadeIn">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4">
+
           <span
             className={`text-transparent bg-clip-text bg-gradient-to-r ${
               isDark
