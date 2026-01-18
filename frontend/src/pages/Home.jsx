@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import myPic from "../assets/afnane.png";
+import myPic from "../assets/afnane.webp";
 import { useTranslation } from "react-i18next";
 import cvFile from "../assets/Afnane_CV.pdf"; // Put your PDF in assets
 
