@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import ScrollManager from "./ScrollManager";
 import Navbar from "./components/Navbar";
@@ -44,6 +45,7 @@ function App() {
         {/* Footer */}
         <Footer isDark={isDark} />
       </div>
+      <SpeedInsights />
     </Router>
   );
 }
